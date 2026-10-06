@@ -3,74 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FF Sensitivity & Touch Optimization Hub</title>
+    <title>FF MARESHAL Sensi & Touch Generator</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --bg-color: #0b0e14;
+            --card-bg: #161b22;
             --accent-color: #ff4757;
-            --accent-hover: #ff6b81;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --success-color: #2ed573;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --text-color: #ffffff;
+            --subtext: #8b949e;
+            --border-color: #30363d;
         }
 
         body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            padding: 16px;
+            margin: 0;
+            padding: 15px;
             display: flex;
             justify-content: center;
         }
 
         .container {
             width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            max-width: 480px;
         }
 
-        header {
+        .header {
             text-align: center;
-            padding: 12px 0;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 15px;
         }
 
-        header h1 {
-            font-size: 1.5rem;
+        .header h1 {
             color: var(--accent-color);
+            font-size: 20px;
+            margin: 0 0 5px 0;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        header p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 4px;
+        .header p {
+            color: var(--subtext);
+            font-size: 12px;
+            margin: 0;
         }
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 16px;
             border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
         }
 
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
+        .card h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-top: 0;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 6px;
         }
 
         .form-group {
@@ -79,104 +75,70 @@
 
         label {
             display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
+            font-size: 12px;
+            color: var(--subtext);
+            margin-bottom: 5px;
         }
 
-        select, input[type="number"] {
+        select {
             width: 100%;
             padding: 10px;
-            border-radius: 8px;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             color: var(--text-color);
-            font-size: 0.95rem;
+            border-radius: 6px;
+            font-size: 14px;
             outline: none;
         }
 
-        button.btn-primary {
+        .btn {
             width: 100%;
             padding: 12px;
-            border-radius: 8px;
             background-color: var(--accent-color);
             color: white;
             border: none;
+            border-radius: 6px;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 14px;
             cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 8px;
+            margin-top: 5px;
+            text-transform: uppercase;
         }
 
-        button.btn-primary:active {
-            background-color: var(--accent-hover);
-        }
-
-        .sensi-grid {
+        .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-top: 12px;
         }
 
-        .sensi-item {
+        .sensi-box {
             background-color: var(--bg-color);
-            padding: 10px;
-            border-radius: 8px;
             border: 1px solid var(--border-color);
-        }
-
-        .sensi-item span {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .sensi-item strong {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-        }
-
-        .cmd-block {
-            background-color: var(--bg-color);
-            padding: 10px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.8rem;
-            word-break: break-all;
-            margin-bottom: 8px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .btn-copy {
-            background-color: var(--border-color);
-            color: var(--text-color);
-            border: none;
-            padding: 6px 10px;
             border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            margin-left: 8px;
-            white-space: nowrap;
+            padding: 10px;
+            text-align: center;
         }
 
-        .btn-copy.copied {
-            background-color: var(--success-color);
-            color: #000;
+        .sensi-box span {
+            display: block;
+            font-size: 11px;
+            color: var(--subtext);
         }
 
-        ul.guide-list {
+        .sensi-box strong {
+            font-size: 18px;
+            color: #2ed573;
+        }
+
+        .tip-list {
             padding-left: 18px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #c9d1d9;
+            margin: 0;
         }
 
-        ul.guide-list li {
+        .tip-list li {
             margin-bottom: 6px;
         }
     </style>
@@ -184,124 +146,176 @@
 <body>
 
 <div class="container">
-    <header>
-        <h1>FF Optimization Hub</h1>
-        <p>Sensitivity Generator & Brevent Touch Pipeline</p>
-    </header>
+    <div class="header">
+        <h1>FF MARESHAL SENSI GENERATOR</h1>
+        <p>Dynamic Sensi & Touch Calibration Tool</p>
+    </div>
 
-    <!-- Sensitivity Configurator -->
+    <!-- DEVICE SETUP CARD -->
     <div class="card">
-        <div class="card-title">Sensitivity Generator</div>
+        <h2>📱 Device Hardware Profile</h2>
         
         <div class="form-group">
-            <label for="hzSelect">Refresh Rate</label>
-            <select id="hzSelect">
-                <option value="60">60 Hz</option>
-                <option value="90">90 Hz</option>
-                <option value="120" selected>120 Hz (TECNO CAMON 19 Pro)</option>
+            <label for="osSelect">Platform / Brand</label>
+            <select id="osSelect" onchange="updateModels()">
+                <option value="iPhone">iPhone (Apple iOS)</option>
+                <option value="TECNO">TECNO</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Infinix">Infinix</option>
+                <option value="Xiaomi">Xiaomi / Redmi</option>
+                <option value="Other">Other Android Device</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="scaleSelect">Sensitivity Scale</label>
-            <select id="scaleSelect">
-                <option value="100" selected>0 - 100 (Standard)</option>
-                <option value="200">0 - 200 (Extended)</option>
+            <label for="modelSelect">Device Model</label>
+            <select id="modelSelect">
+                <!-- Dynamic choices updated by JS -->
             </select>
         </div>
 
         <div class="form-group">
-            <label for="hudSelect">Control Style / Playstyle</label>
-            <select id="hudSelect">
-                <option value="drag">2-Finger Drag Headshot</option>
-                <option value="backtrack">3/4-Finger Backtrack</option>
+            <label for="ramSelect">RAM Capacity</label>
+            <select id="ramSelect">
+                <option value="2GB">2 GB RAM</option>
+                <option value="3GB">3 GB RAM</option>
+                <option value="4GB" selected>4 GB RAM</option>
+                <option value="6GB">6 GB RAM</option>
+                <option value="8GB">8 GB / 12 GB+ RAM</option>
             </select>
         </div>
 
-        <button class="btn-primary" onclick="generateSensi()">Generate Profile</button>
+        <button class="btn" onclick="generateSensi()">Generate Hardware Sensi</button>
+    </div>
 
-        <div class="sensi-grid" id="sensiResults" style="display:none;">
-            <div class="sensi-item"><span>General</span><strong id="valGeneral">-</strong></div>
-            <div class="sensi-item"><span>Red Dot</span><strong id="valRedDot">-</strong></div>
-            <div class="sensi-item"><span>2x Scope</span><strong id="val2x">-</strong></div>
-            <div class="sensi-item"><span>4x Scope</span><strong id="val4x">-</strong></div>
-            <div class="sensi-item"><span>Sniper Scope</span><strong id="valSniper">-</strong></div>
-            <div class="sensi-item"><span>Free Look</span><strong id="valFreeLook">-</strong></div>
+    <!-- GENERATED SENSI CARD -->
+    <div class="card">
+        <h2>🎯 Calibrated Sensitivity (0-100)</h2>
+        <div class="grid-2">
+            <div class="sensi-box"><span>General</span><strong id="valGeneral">--</strong></div>
+            <div class="sensi-box"><span>Red Dot</span><strong id="valRedDot">--</strong></div>
+            <div class="sensi-box"><span>2x Scope</span><strong id="val2x">--</strong></div>
+            <div class="sensi-box"><span>4x Scope</span><strong id="val4x">--</strong></div>
+            <div class="sensi-box"><span>Sniper Scope</span><strong id="valSniper">--</strong></div>
+            <div class="sensi-box"><span>Free Look</span><strong id="valFree">--</strong></div>
+        </div>
+        <div style="margin-top:10px;" class="sensi-box">
+            <span>Recommended Fire Button Size</span>
+            <strong id="valButton" style="color:var(--accent-color);">--</strong>
         </div>
     </div>
 
-    <!-- Brevent Pipeline Adjustment -->
+    <!-- OPTIMIZATION TIPS CARD -->
     <div class="card">
-        <div class="card-title">Brevent Touch Pipeline Commands</div>
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Run via Brevent / ADB to reduce input latency on HIOS/Android.</p>
-
-        <div class="cmd-block">
-            <span>settings put system drag_min_distance 5</span>
-            <button class="btn-copy" onclick="copyText('settings put system drag_min_distance 5', this)">Copy</button>
-        </div>
-
-        <div class="cmd-block">
-            <span>settings put secure touch_slop 1</span>
-            <button class="btn-copy" onclick="copyText('settings put secure touch_slop 1', this)">Copy</button>
-        </div>
-
-        <div class="cmd-block">
-            <span>settings put secure tap_timeout 100</span>
-            <button class="btn-copy" onclick="copyText('settings put secure tap_timeout 100', this)">Copy</button>
-        </div>
-
-        <div class="cmd-block">
-            <span>settings put secure long_press_timeout 150</span>
-            <button class="btn-copy" onclick="copyText('settings put secure long_press_timeout 150', this)">Copy</button>
-        </div>
-    </div>
-
-    <!-- Smoothness Guidelines -->
-    <div class="card">
-        <div class="card-title">Device & Gameplay Tips</div>
-        <ul class="guide-list">
-            <li><strong>Display:</strong> Keep display refresh rate locked at 120Hz for consistent touch response.</li>
-            <li><strong>DPI Scaling:</strong> Recommended DPI target: ~460 DPI for responsive drag drag distance.</li>
-            <li><strong>Network:</strong> Use Cloudflare Private DNS (<code>1dot1dot1dot1.cloudflare-dns.com</code>) to stabilize ping.</li>
-            <li><strong>Gameplay:</strong> Practice smooth drag speed rather than aggressive flicks to maximize headshot lock.</li>
+        <h2 id="tipTitle">💡 Platform Optimization Tips</h2>
+        <ul class="tip-list" id="tipContent">
+            <li>Select your device details above and press Generate to view targeted performance & touch optimization guidelines.</li>
         </ul>
     </div>
 </div>
 
 <script>
-    function generateSensi() {
-        const scale = parseInt(document.getElementById('scaleSelect').value);
-        const style = document.getElementById('hudSelect').value;
-        const multiplier = scale === 200 ? 2 : 1;
+    const modelOptions = {
+        iPhone: ["iPhone 15 / 15 Pro Max", "iPhone 14 / 14 Pro", "iPhone 13 / 13 Pro", "iPhone 12 / 12 Pro", "iPhone 11 / 11 Pro", "iPhone X / XS / XR", "iPhone 8 / 8 Plus / SE"],
+        TECNO: ["CAMON 19 Pro 5G", "CAMON 20 / 30 Series", "POVA 5 / 6 Pro", "Spark 10 / 20 Series"],
+        Samsung: ["Galaxy A12 / A13 / A14", "Galaxy A23 / A34 / A54", "Galaxy S21 / S22 / S23 / S24"],
+        Infinix: ["Hot 11 / 12 / 30 / 40", "Note 12 / 30 / 40 VIP", "Zero Ultra / 30"],
+        Xiaomi: ["Redmi Note 10 / 11 / 12", "Poco X3 / X4 / X5 Pro", "Xiaomi 12 / 13 Series"],
+        Other: ["Generic Low-End (2GB-3GB)", "Generic Mid-Range (4GB-6GB)", "Generic Flagship (8GB+)"]
+    };
 
-        let baseGen = style === 'drag' ? 96 : 92;
-        let baseRed = style === 'drag' ? 92 : 88;
-        let base2x  = 88;
-        let base4x  = 84;
-        let baseSnp = 50;
-        let baseFL  = 65;
+    function updateModels() {
+        const os = document.getElementById("osSelect").value;
+        const modelSelect = document.getElementById("modelSelect");
+        modelSelect.innerHTML = "";
 
-        document.getElementById('valGeneral').innerText = Math.round(baseGen * multiplier);
-        document.getElementById('valRedDot').innerText  = Math.round(baseRed * multiplier);
-        document.getElementById('val2x').innerText      = Math.round(base2x * multiplier);
-        document.getElementById('val4x').innerText      = Math.round(base4x * multiplier);
-        document.getElementById('valSniper').innerText = Math.round(baseSnp * multiplier);
-        document.getElementById('valFreeLook').innerText = Math.round(baseFL * multiplier);
-
-        document.getElementById('sensiResults').style.display = 'grid';
-    }
-
-    function copyText(text, btnElement) {
-        navigator.clipboard.writeText(text).then(() => {
-            const originalText = btnElement.innerText;
-            btnElement.innerText = 'Copied!';
-            btnElement.classList.add('copied');
-            setTimeout(() => {
-                btnElement.innerText = originalText;
-                btnElement.classList.remove('copied');
-            }, 1500);
+        modelOptions[os].forEach(model => {
+            let opt = document.createElement("option");
+            opt.value = model;
+            opt.textContent = model;
+            modelSelect.appendChild(opt);
         });
     }
+
+    function generateSensi() {
+        const os = document.getElementById("osSelect").value;
+        const ram = document.getElementById("ramSelect").value;
+
+        let baseGen, baseRed, base2x, base4x, baseSniper, baseFree, buttonSize;
+
+        // Custom calculation according to platform and RAM specs
+        if (os === "iPhone") {
+            if (ram === "2GB" || ram === "3GB") {
+                baseGen = Math.floor(Math.random() * 5) + 96;   // 96-100
+                baseRed = Math.floor(Math.random() * 5) + 93;   // 93-97
+                base2x = Math.floor(Math.random() * 6) + 88;    // 88-93
+                base4x = Math.floor(Math.random() * 6) + 82;    // 82-87
+                buttonSize = "42% - 45%";
+            } else {
+                baseGen = Math.floor(Math.random() * 5) + 91;   // 91-95
+                baseRed = Math.floor(Math.random() * 5) + 87;   // 87-91
+                base2x = Math.floor(Math.random() * 5) + 80;    // 80-84
+                base4x = Math.floor(Math.random() * 5) + 74;    // 74-78
+                buttonSize = "38% - 42%";
+            }
+            baseSniper = Math.floor(Math.random() * 10) + 45;   // 45-54
+            baseFree = Math.floor(Math.random() * 10) + 65;     // 65-74
+
+            // Update Tips for iPhone
+            document.getElementById("tipTitle").innerText = "🍎 iPhone Optimization Guidelines";
+            document.getElementById("tipContent").innerHTML = `
+                <li><b>3D Touch / Haptic Touch:</b> Disable 'Touch Accommodations' in iOS Accessibility settings to prevent input delay.</li>
+                <li><b>Control Center Lock:</b> Enable 'Guided Access' before matches to prevent accidentally pulling down notifications during upward drag headshots.</li>
+                <li><b>Drag Headshot Technique:</b> iOS features smooth touch response—use short, rapid upward flicks rather than long screen swipes.</li>
+                <li><b>Graphics & Battery:</b> Keep Free Fire graphics on 'Standard' or 'Smooth' with 'High FPS' enabled to avoid thermal throttling and screen drops.</li>
+            `;
+        } else {
+            // Android Logic
+            if (ram === "2GB" || ram === "3GB") {
+                baseGen = Math.floor(Math.random() * 3) + 98;   // 98-100
+                baseRed = Math.floor(Math.random() * 4) + 95;   // 95-98
+                base2x = Math.floor(Math.random() * 5) + 90;    // 90-94
+                base4x = Math.floor(Math.random() * 5) + 85;    // 85-89
+                buttonSize = "50% - 54%";
+            } else if (ram === "4GB" || ram === "6GB") {
+                baseGen = Math.floor(Math.random() * 5) + 93;   // 93-97
+                baseRed = Math.floor(Math.random() * 5) + 89;   // 89-93
+                base2x = Math.floor(Math.random() * 5) + 83;    // 83-87
+                base4x = Math.floor(Math.random() * 5) + 77;    // 77-81
+                buttonSize = "44% - 48%";
+            } else {
+                baseGen = Math.floor(Math.random() * 5) + 88;   // 88-92
+                baseRed = Math.floor(Math.random() * 5) + 84;   // 84-88
+                base2x = Math.floor(Math.random() * 5) + 78;    // 78-82
+                base4x = Math.floor(Math.random() * 5) + 70;    // 70-74
+                buttonSize = "40% - 44%";
+            }
+            baseSniper = Math.floor(Math.random() * 10) + 50;
+            baseFree = Math.floor(Math.random() * 10) + 70;
+
+            // Update Tips for Android
+            document.getElementById("tipTitle").innerText = "🤖 Android Optimization Guidelines";
+            document.getElementById("tipContent").innerHTML = `
+                <li><b>Brevent / ADB Tuning:</b> Apply <code>drag_min_distance 5</code> and <code>touch_slop 1</code> for maximum sensitivity response.</li>
+                <li><b>DPI Adjustment:</b> Set DPI in Developer Options to ~440-460 for optimal drag distance.</li>
+                <li><b>Display Refresh Rate:</b> Set display settings to 90Hz or 120Hz forced mode.</li>
+                <li><b>Background Management:</b> Clear background applications prior to matches to prevent RAM throttling.</li>
+            `;
+        }
+
+        // Output to screen
+        document.getElementById("valGeneral").innerText = baseGen;
+        document.getElementById("valRedDot").innerText = baseRed;
+        document.getElementById("val2x").innerText = base2x;
+        document.getElementById("val4x").innerText = base4x;
+        document.getElementById("valSniper").innerText = baseSniper;
+        document.getElementById("valFree").innerText = baseFree;
+        document.getElementById("valButton").innerText = buttonSize;
+    }
+
+    // Initialize models on load
+    updateModels();
+    generateSensi();
 </script>
 
 </body>
